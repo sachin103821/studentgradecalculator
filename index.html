@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Grade Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: antiquewhite;
+  }
+  #calculator {
+    border-radius:50%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: rgb(10, 191, 223) ;
+    border-radius: 5px;
+  }
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  p {
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div id="calculator">
+  <h2>Student Grade Calculator</h2>
+  <input type="number" id="quiz" placeholder="Enter quiz score (out of 20)">
+  <input type="number" id="assignment" placeholder="Enter assignment score (out of 30)">
+  <input type="number" id="final" placeholder="Enter final exam score (out of 50)">
+  <button onclick="calculateGrade()">Calculate Grade</button>
+  <p id="grade"></p>
+</div>
+
+<script>
+  function calculateGrade() {
+    const quizScore = parseFloat(document.getElementById('quiz').value);
+    const assignmentScore = parseFloat(document.getElementById('assignment').value);
+    const finalScore = parseFloat(document.getElementById('final').value);
+    
+    const totalScore = quizScore + assignmentScore + finalScore;
+    const percentage = (totalScore / 100) * 100; // Assuming total marks are 100
+    
+    let grade;
+    if (percentage >= 90) {
+       grade = 'A'
+
+    } else if (percentage >= 80) {
+        grade = 'B'
+
+    } else if (percentage >= 70) {
+        grade = 'C'
+
+    } else if (percentage >= 60) {
+        grade = 'D'
+
+    } else {
+        grade = 'F'
+
+    }
+    
+    document.getElementById('grade').textContent = `Your grade is: ${grade}`;
+  }
+</script>
+
+</body>
+</html>
